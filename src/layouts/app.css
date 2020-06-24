@@ -1,0 +1,13 @@
+
+html, body {
+  height: 100vh;
+}
+body {
+  background-color: #ffffff !important;
+  min-width: 1000px;
+}
+.ReactTable .rt-td {
+  padding: 4px 4px;
+  display: flex;
+  align-items: center;
+}

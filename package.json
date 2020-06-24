@@ -1,0 +1,71 @@
+{
+  "name": "propertyleads-webapp",
+  "version": "0.3.57",
+  "private": true,
+  "dependencies": {
+    "@date-io/date-fns": "^2.0.1",
+    "@material-ui/core": "^4.9.5",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.45",
+    "@material-ui/styles": "^4.9.0",
+    "axios": "^0.19.0",
+    "classnames": "^2.2.6",
+    "date-fns": "^2.8.1",
+    "match-sorter": "^4.1.0",
+    "material-ui-dropzone": "^2.4.0",
+    "namor": "^2.0.2",
+    "query-string": "^6.7.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^3.4.1",
+    "react-select": "^3.0.4",
+    "react-table": "^7.1.0",
+    "react-table-sticky": "^1.1.2",
+    "react-youtube": "^7.11.2",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.1.1",
+    "typescript": "^3.5.2"
+  },
+  "scripts": {
+    "start": "PORT=3006 react-scripts start",
+    "dev": "npm start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "npm run clearBuild && npm run versionPatch && env-cmd -f ./.env npm run build && npm run commitToRepo && env-cmd -f ./.env npm run sendToS3 && env-cmd -f ./.env npm run cacheBuster",
+    "deploy-prod": "npm run clearBuild && npm run build && REACT_APP_STAGE=production npm run sendToS3 && REACT_APP_STAGE=production npm run cacheBuster",
+    "versionPatch": "npm version --no-git-tag-version patch",
+    "clearBuild": "babel-node ./scripts/clearBuildFolder.js",
+    "commitToRepo": "babel-node ./scripts/commitToRepo.js",
+    "cacheBuster": "babel-node ./scripts/cacheBuster.js",
+    "sendToS3": "babel-node ./scripts/s3Deploy.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.477.0",
+    "babel-cli": "^6.26.0",
+    "env-cmd": "^10.0.1",
+    "rimraf": "^2.6.3",
+    "s3": "^4.4.0",
+    "serve": "^11.0.1",
+    "simple-git": "^1.115.0"
+  }
+}
